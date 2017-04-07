@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="equipStockForm" type="com.stock.equipStock.EquipStockForm" />
+		<form-bean name="equipStockEntiyForm" type="com.stock.equipStock.EquipStockEntiyForm" />
+		<form-bean name="importEquipForm" type="com.stock.equipStock.ImportEquipForm" />
+    </form-beans>
+	
+    <action-mappings>
+        <action name="equipStockForm" path="/equipStockList" type="com.stock.equipStock.EquipStockAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/equipStock/query.jsp"/>
+        </action>
+        <action name="equipStockEntiyForm" path="/equipStockEdit" type="com.stock.equipStock.EquipStockEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/equipStock/insert.jsp"/>
+			<forward name="init.edit" path="/equipStock/edit.jsp"/>
+			<forward name="success" path="/equipStockList.do?act=init"/>
+			<forward name="error.insert" path="/equipStock/insert.jsp"/>
+			<forward name="error.edit" path="/equipStock/edit.jsp"/>
+			<forward name="yiku" path="/equipStock/yiku.jsp"/>
+        </action>
+         <action name="importEquipForm" path="/equUpload" type="com.stock.equipStock.ImportEquipAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/equipStockList.do?act=init"/>
+        </action>
+    </action-mappings>
+    
+</struts-config>

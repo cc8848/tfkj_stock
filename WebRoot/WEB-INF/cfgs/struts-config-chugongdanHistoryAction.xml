@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="chugongdanHistoryForm" type="com.stock.chugongdanHistory.PaiGongDanForm" />
+    </form-beans>
+	
+    <action-mappings>
+        <action name="chugongdanHistoryForm" path="/chugongdanHistoryList" type="com.stock.chugongdanHistory.ChuGongDanHistoryAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/chugongdanHistory/query.jsp"/>
+        </action>
+       
+    </action-mappings>
+    
+</struts-config>

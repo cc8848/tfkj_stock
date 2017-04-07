@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="telNumberForm" type="com.stock.telnumber.TelNumberForm" />
+		<form-bean name="importTelForm" type="com.stock.telnumber.ImportTelForm" />
+		<form-bean name="telNumEidtForm" type="com.stock.telnumber.TelNumEidtForm" />
+    </form-beans>
+	
+    <action-mappings>
+        <action name="telNumberForm" path="/telNumberList" type="com.stock.telnumber.TelNumberAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/telnumber/query.jsp"/>
+        </action>
+        
+        <action name="importTelForm" path="/telUpload" type="com.stock.telnumber.ImportTelAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/telNumberList.do?act=init"/>
+        </action>
+        
+         <action name="telNumEidtForm" path="/telNumEdit" type="com.stock.telnumber.TelNumEditAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/telNumberList.do?act=init"/>
+			<forward name="init.edit" path="/telnumber/dataedit.jsp"/>
+        </action>
+    </action-mappings>
+    
+</struts-config>

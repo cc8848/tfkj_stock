@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="employeeForm" type="com.hrbank.business.employee.EmployeeForm" />
+		<form-bean name="employeeConditionForm" type="com.hrbank.business.employee.EmployeeConditionForm" />
+		<form-bean name="shichangEidtForm" type="com.stock.weihu.ShichangEidtForm" />
+		<form-bean name="dianshiEidtForm" type="com.stock.weihu.DianshiEidtForm" />
+		<form-bean name="xiaoquForm" type="com.stock.weihu.XiaoquForm" />
+		<form-bean name="iptvlogEidtForm" type="com.stock.weihu.IptvlogEidtForm" />
+		<form-bean name="webServiceLogForm" type="com.webService.log.WebServiceLogForm" />
+		<form-bean name="rediusLogForm" type="com.stock.weihu.RediusLogForm"/>
+    </form-beans>
+	
+    <action-mappings>
+        <action name="employeeConditionForm" path="/employeeList" type="com.hrbank.business.employee.EmployeeAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/employee/query.jsp"/>
+        </action>
+		<action name="employeeForm" path="/employeeEdit" type="com.hrbank.business.employee.EmployeeEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/employee/insert.jsp"/>
+			<forward name="init.edit" path="/employee/edit.jsp"/>
+			<forward name="success" path="/employeeList.do?act=init"/>
+			<forward name="error.edit" path="/employee/edit.jsp"/>
+			<forward name="error.insert" path="/employee/insert.jsp"/>
+        </action>
+        
+        <action name="shichangEidtForm" path="/shichangList" type="com.stock.weihu.ShichangAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/weihu/shichang_query.jsp"/>
+			<forward name="success" path="/shichangList.do?act=init"/>
+			<forward name="success1" path="/shichangList.do?act=init"/>
+        </action>
+        
+         <action name="shichangEidtForm" path="/shichangEdit" type="com.stock.weihu.ShichangEidtAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/weihu/shichang_insert.jsp"/>
+			<forward name="init.edit" path="/weihu/shichang_edite.jsp"/>
+			<forward name="success1" path="/shichangList.do?act=init"/>
+        </action>
+        
+         <action name="dianshiEidtForm" path="/dianshiList" type="com.stock.weihu.DianshiAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/weihu/dianshi_query.jsp"/>
+			<forward name="success" path="/dianshiList.do?act=init"/>
+			<forward name="success1" path="/dianshiList.do?act=init"/>
+        </action>
+        
+         <action name="dianshiEidtForm" path="/dianshiEdit" type="com.stock.weihu.DianshiEidtAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/weihu/dianshi_insert.jsp"/>
+			<forward name="init.edit" path="/weihu/dianshi_edite.jsp"/>
+			<forward name="success1" path="/dianshiList.do?act=init"/>
+        </action>
+        
+        <action name="iptvlogEidtForm" path="/iptvlogList" type="com.stock.weihu.IptvlogAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/weihu/iptvlog_query.jsp"/>
+			<forward name="success" path="/iptvlogList.do?act=init"/>
+			<forward name="success1" path="/iptvlogList.do?act=init"/>
+        </action>
+        
+        <!-- create by 赵兴华 2015-01-23 -->
+        <action name="webServiceLogForm" path="/webServiceLog" type="com.webService.log.WebServiceLogAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/log/WebServiceList.jsp"/>
+        </action>
+        <action name="webServiceLogForm" path="/reSendXml" type="com.webService.log.WebServiceLogAction" parameter="act" validate="true" scope="request">
+			<forward name="reSendXml" path="/"/>
+        </action>
+        
+        
+        <action name="iptvlogEidtForm" path="/iptvlogReport" type="com.stock.weihu.IptvlogReportAction" parameter="act" validate="true" scope="request">
+        </action>
+        
+         <action name="xiaoquForm" path="/xiaoquList" type="com.stock.weihu.XiaoquAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/weihu/xiaoqu_query.jsp"/>
+			<forward name="success" path="/xiaoquList.do?act=init"/>
+			<forward name="success1" path="/xiaoquList.do?act=init"/>
+        </action>
+        
+         <action name="xiaoquForm" path="/xiaoquEdit" type="com.stock.weihu.XiaoquEidtAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/weihu/xiaoqu_insert.jsp"/>
+			<forward name="init.edit" path="/weihu/xiaoqu_edite.jsp"/>
+			<forward name="init.shichang" path="/weihu/xiaoqu_shichang.jsp"/>
+			<forward name="init.dianshi" path="/weihu/xiaoqu_dianshi.jsp"/>
+			<forward name="success1" path="/xiaoquList.do?act=init"/>
+        </action>
+        
+          <action name="xiaoquForm" path="/quyuweihuList" type="com.stock.weihu.QuyuAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/weihu/quyu_query.jsp"/>
+			<forward name="success" path="/quyuweihuList.do?act=init"/>
+			<forward name="success1" path="/quyuweihuList.do?act=init"/>
+        </action>
+        
+         <action name="xiaoquForm" path="/quyuweihuEdit" type="com.stock.weihu.QuyuEidtAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/weihu/quyu_insert.jsp"/>
+			<forward name="init.edit" path="/weihu/quyu_edit.jsp"/>
+			<forward name="success1" path="/quyuweihuList.do?act=init"/>
+        </action>
+
+
+		<!--redius接口日志  wangqingxiang 2016.06.20-->
+		<action name="rediusLogForm" path="/rediuslog" type="com.stock.weihu.RediusLogAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/weihu/rediuslog_query.jsp"/>
+			<forward name="success" path="/iptvlogList.do?act=init"/>
+			<forward name="success1" path="/iptvlogList.do?act=init"/>
+		</action>
+    </action-mappings>
+    
+</struts-config>

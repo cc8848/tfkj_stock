@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>回单提交</title>
+    <meta http-equiv="content-type" content="text/html; charset=GBK">
+	<style type="text/css">
+	  #style {float:left;}
+	  #titlePanel {text-align: center;}
+	</style>
+  </head>
+  <body>
+    <form name="frm" >
+    <h2 id="titlePanel">回单提交</h2>
+			<table >
+			<tr>				
+				<td width="20%">
+				</td>
+				<td width="20%">
+				</td>
+				<td width="20%">
+				</td>
+				<td width="20%">
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					 上述电子单信息是否与纸质工单有出入：<input type='radio' name='item' value="无出入" onclick="disTxt(this)">无出入
+					 <input type='radio' name='item' value='有出入' onclick="disTxt(this)">有出入
+					 <input type='radio' name='item' value='开票金额拆分' onclick="disTxt(this)">开票金额拆分
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					 纸质工单与电子单差异描述：<input type='textarea' id="txtdesc" name='item' value=''>
+					 
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					 开票拆分描述：<input type='textarea' id="txtsplit" name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					 施工人：<input type='text' id="txtsplit" name='item' value=''>*
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					 收款时间：<input type='text' id="txtsplit" name='item' value=''>*当选择“无出入”或“开票金额拆分”时“收款时间”必须与“开机时间”一致才能“提交”此用户回单信息
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					用户姓名：<input type='text' id="txtsplit" name='item' value=''>*
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					身份证号：<input type='text' id="txtsplit" name='item' value=''>*
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					分光线号：<input type='text' id="txtsplit" name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					接续位置：<input type='text' id="txtsplit" name='item' value=''>*
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					总收费：<input type='text' id="txtsplit" name='item' value=''>*必须为数字,且当选择“无出入”或“开票金额拆分”时其必须与“ONU押金、机顶盒押金、收视费、宽带费、初装费、设备销售费、材料费、不足月够费、年费”这九项费用的总和相等才能“提交”此用户回单信息，在“总收费填写处”的右侧自动计算出上述九项费用的总和，以便填写人参考比对
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					收据本号/收据号：<input type='text' id="txtsplit" name='item' value=''>*同时对应“收据号”项和“收据本号/收据号”项
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					开票信息：<input type='text' id="txtsplit" name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					其他设备使用情况：<input type='text' id="txtsplit" name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					其他耗材（选填）：<input type='text' id="txtsplit" name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					接线子（选填数字）：<input type='text' id="txtsplit" name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					RJ11（选填数字）：<input type='text' id="txtsplit" name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					RJ45（选填数字）：<input type='text' id="txtsplit" name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					模块（选填数字）：<input type='text' id="txtsplit" name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					面板（选填数字）：<input type='text' id="txtsplit" name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					网线（选填数字）：<input type='text' id="txtsplit" name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					现场备注（选填）：<input type='text' id="txtsplit" name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>	
+			<tr>
+			 <td colspan="5">
+			 	<span style="float:center">
+				<input type="button" value="正常提交" onclick="checkAll();"> 
+				<input type="button" value="开票拆分" onclick="uncheckAll();"> 
+				<input type="button" value="纠错修改" onclick="checkAll();"> 
+				<input type="button" value="返回" onclick="uncheckAll();"> 
+			    </span>
+			 </td>
+			</tr>
+			</table>
+		<br/>
+    </form>
+  </body>
+  <script>
+  	function disTxt(obj) {
+  		var value = obj.value;
+  		if (value == '有出入') {
+  			document.getElementById("txtsplit").disabled = true;
+  			document.getElementById("txtdesc").disabled = false;
+  		} else if (value == '开票金额拆分') {
+  			document.getElementById("txtsplit").disabled = false;
+  			document.getElementById("txtdesc").disabled = true;
+  		} else {
+  			document.getElementById("txtsplit").disabled = true;
+  			document.getElementById("txtdesc").disabled = true;
+  		}
+  	}
+  	
+ 	function checkAll() { 
+		var code_Values = document.getElementsByTagName("input"); 
+			for (var i = 0;i < code_Values.length; i++) { 
+				if (code_Values[i].type == "checkbox") { 
+					code_Values[i].checked = true; 
+					choseItem(obj);
+			}
+		}
+	}
+	
+	function uncheckAll() { 
+	var code_Values = document.getElementsByTagName("input"); 
+		for(var i = 0;i < code_Values.length;i++) { 
+			if(code_Values[i].type == "checkbox") { 
+			code_Values[i].checked = false; 
+			choseItem();
+			} 
+		} 
+	} 
+  
+	function choseItem(obj1) 
+	{ 
+		var v=""; 
+		var check_item = document.frm.item;
+		//alert(check_item.length);
+		for(var i=0;i<check_item.length;i++) 
+		{ 
+			if(check_item[i].checked) 
+			{ 
+				v+=","+obj[i]; 
+			} 
+		}
+		document.frm.txt.value=v.replace(/^,{1}/,""); 
+	} 
+	
+	function foo() 
+	{ 
+		var a = document.getElementById("txt").value;
+		window.returnValue = a;
+		window .close(); 
+		window .opener.document.getElementById("txt0").value=document.getElementById("txt").value;
+	} 
+</script>
+</html>

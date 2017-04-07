@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>备注填写</title>
+    <meta http-equiv="content-type" content="text/html; charset=GBK">
+	<style type="text/css">
+	  #style {float:left;}
+	  #titlePanel {text-align: center;}
+	</style>
+  </head>
+  <body>
+    <form name="frm" >
+    <h2 id="titlePanel">备注填写</h2>
+			<table >
+			<tr>				<td width="20%">
+				</td>
+				<td width="20%">
+				</td>
+				<td width="20%">
+				</td>
+				<td width="20%">
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+				 <td colspan="4">
+					 备注信息：<input type='text' name='item' value=''>
+				</td>
+				<td width="20%">
+				</td>
+			</tr>
+			<tr>
+			 <td colspan="5">
+			 	<span style="float:right">
+				<input type="button" value="保存" onclick="commonCheckSubmit('huidandaoruList.do?act=huidanEdit')"> 
+				<input type="button" value="取消" onclick="uncheckAll();"> 
+			    </span>
+			 </td>
+			</tr>
+			</table>
+		<br/>
+    </form>
+  </body>
+  <script>
+ 	function checkAll() { 
+		var code_Values = document.getElementsByTagName("input"); 
+			for(var i = 0;i < code_Values.length;i++) { 
+				if(code_Values[i].type == "checkbox") { 
+				code_Values[i].checked = true; 
+				choseItem(obj);
+				} 
+			} 
+		} 
+	function uncheckAll() { 
+	var code_Values = document.getElementsByTagName("input"); 
+		for(var i = 0;i < code_Values.length;i++) { 
+			if(code_Values[i].type == "checkbox") { 
+			code_Values[i].checked = false; 
+			choseItem();
+			} 
+		} 
+	} 
+  
+	function choseItem(obj1) 
+	{ 
+		var v=""; 
+		var check_item = document.frm.item;
+		//alert(check_item.length);
+		for(var i=0;i<check_item.length;i++) 
+		{ 
+			if(check_item[i].checked) 
+			{ 
+				v+=","+obj[i]; 
+			} 
+		}
+		document.frm.txt.value=v.replace(/^,{1}/,""); 
+	} 
+	
+	function foo() 
+	{ 
+		var a = document.getElementById("txt").value;
+		window.returnValue = a;
+		window .close(); 
+		window .opener.document.getElementById("txt0").value=document.getElementById("txt").value;
+	} 
+</script>
+</html>

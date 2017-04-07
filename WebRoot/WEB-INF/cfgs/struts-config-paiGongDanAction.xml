@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="paiGongDanForm" type="com.stock.paigongdan.PaiGongDanForm" />
+		<form-bean name="paiGongDanEntiyForm" type="com.stock.paigongdan.PaiGongDanEntiyForm" />
+		<form-bean name="importPGDForm" type="com.stock.paigongdan.ImportPGDForm" />
+		<form-bean name="paiGongDanForm" type="com.stock.paigongdan.PaiGongDanForm" />
+		<form-bean name="paiGongDanPreImportForm" type="com.stock.paigongdan.PaiGongDanPreImportForm" />
+    </form-beans>
+	
+    <action-mappings>
+    	<action name="paiGongDanForm" path="/anzhuangbiduiList" type="com.stock.paigongdan.AnzhuangbiduiAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/paigongdan/anzhuangbidui.jsp"/>
+        </action>
+        <action name="paiGongDanForm" path="/paigongdanList" type="com.stock.paigongdan.PaiGongDanAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/paigongdan/query.jsp"/>
+        </action>
+        <action name="paiGongDanEntiyForm" path="/paigongdanEdit" type="com.stock.paigongdan.PaiGongDanEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/paigongdan/insert.jsp"/>
+			<forward name="init.edit" path="/paigongdan/edit.jsp"/>
+			<forward name="success" path="/paigongdanList.do?act=init"/>
+			<forward name="error.insert" path="/paigongdan/insert.jsp"/>
+			<forward name="error.edit" path="/paigongdan/edit.jsp"/>
+			<forward name="showInfo" path="/paigongdan/showInfo.jsp"/>
+			<forward name="init.insert2" path="/paigongdan/insert.jsp"/>
+			<forward name="initError" path="/yuyuequeryList.do?act=init"/>
+			<forward name="showInfo1" path="/tongji/showInfo.jsp"/>
+			
+			<forward name="init.insert.dangri" path="/tongji/dangRiInsert.jsp"/>
+			<forward name="success.chugongdan" path="/tongjiList.do?act=init"/>
+			<forward name="error.dangri" path="/"/>
+			<forward name="changekd" path="/"/>
+			<forward name="changekdsc" path="/"/>
+			<forward name="changekddk" path="/"/>
+			<forward name="changekdshichang" path="/"/>
+        </action>
+        
+        <action name="importPGDForm" path="/paigongdanUpload" type="com.stock.paigongdan.ImportPaiGongDanAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/paigongdanList.do?act=init"/>
+        </action>
+        
+         <action name="paiGongDanForm" path="/pgdReport" type="com.stock.paigongdan.PGDReportAction" parameter="act" validate="true" scope="request">
+        </action>
+        
+        <action name="paiGongDanPreImportForm" path="/huidanPreImportList" type="com.stock.paigongdan.HuidanPreImportAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/paigongdan/preimportquery.jsp"/>
+			<forward name="success" path="/huidanPreImportList.do?act=init"/>
+        </action>
+        <action name="paiGongDanEntiyForm" path="/huidanPreImportListEdit" type="com.stock.paigongdan.HuidanPreImportEditAction" parameter="act" validate="true" scope="request">
+        	<forward name="init.edit" path="/paigongdan/preimportedit.jsp"/>
+        	<forward name="success" path="/huidanPreImportList.do?act=init"/>
+        </action>
+        <action name="paiGongDanEntiyForm" path="/huidanPreImportReport" type="com.stock.paigongdan.HuidanPreImportReportAction" parameter="act" validate="true" scope="request">
+        </action>
+        <action name="paiGongDanPreImportForm" path="/huidanPreImportHistoryList" type="com.stock.paigongdan.HuidanPreImportHistoryAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/paigongdan/preimportHistoryquery.jsp"/>
+			<forward name="success" path="/huidanPreImportHistoryList.do?act=init"/>
+        </action>
+    </action-mappings>
+    
+</struts-config>

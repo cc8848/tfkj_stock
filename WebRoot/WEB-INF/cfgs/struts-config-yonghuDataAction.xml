@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="yonghuDataForm" type="com.stock.yonghushuju.YonghuDataForm" />
+		<form-bean name="yonghuDataEntityForm" type="com.stock.yonghushuju.YonghuDataEntityForm" />
+		<form-bean name="importDataForm" type="com.stock.yonghushuju.ImportDataForm" />
+		<form-bean name="telNumEidtForm" type="com.stock.telnumber.TelNumEidtForm" />
+		<form-bean name="xiugaiShujuForm" type="com.stock.yonghushuju.XiugaiShujuForm" />
+		<form-bean name="jiaofeiDataFrom" type="com.stock.yonghushuju.JiaofeiDataFrom" />
+		<form-bean name="tietongDataForm" type="com.stock.yonghushuju.TietongDataForm" />
+
+    </form-beans>
+	
+    <action-mappings>
+        <action name="yonghuDataForm" path="/yonghuDataList" type="com.stock.yonghushuju.YonghuDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/yonghushuju/query.jsp"/>
+        </action>
+        <action name="yonghuDataEntityForm" path="/yonghuDataEdit" type="com.stock.yonghushuju.YonghuDataEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.edit" path="/yonghushuju/dataedit.jsp"/>
+			<forward name="error.edit" path="/yonghushuju/dataedit.jsp"/>
+			<forward name="shebei" path="/yonghushuju/shebeiedit.jsp"/>
+			<forward name="showinfo" path="/yonghushuju/datainfo.jsp"/>
+			<forward name="success" path="/yonghuDataList.do?act=init"/>
+			<forward name="init.tuiding2" path="/yonghushuju/tuiding2.jsp"/>
+        </action>
+        <action name="yonghuDataForm" path="/jiaofeiTXList" type="com.stock.yonghushuju.JiaofeiXTAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/yonghushuju/tixingquery.jsp"/>
+        </action>
+        <action name="yonghuDataEntityForm" path="/jiaofeiTXEdit" type="com.stock.yonghushuju.JiaofeiXTEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.edit" path="/yonghushuju/jiaofeidataedit.jsp"/>
+			<forward name="success" path="/jiaofeiTXList.do?act=init"/>
+        </action>
+        <action name="importDataForm" path="/dataUpload" type="com.stock.yonghushuju.ImportDataAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/yonghuDataList.do?act=init"/>
+			<forward name="init" path="/yonghuDataYunweiList.do?act=init"/>
+        </action>
+         <action name="importDataForm" path="/weiXiudataUpload" type="com.stock.yonghushuju.ImportDataAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/weixiuDataList.do?act=init"/>
+			<forward name="init" path="/weixiuDataYunweiList.do?act=init"/>
+        </action>
+       
+        <action name="importDataForm" path="/jiaoFeidataUpload" type="com.stock.yonghushuju.ImportDataAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/jiaofeiTXList.do?act=init"/>
+			<forward name="init" path="/jiaofeiTXYunweiList.do?act=init"/>
+        </action>
+   
+		<action name="xiugaiShujuForm" path="/xiugaiShujuLogList" type="com.stock.yonghushuju.XiugaiShujuAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/yonghushuju/queryXiugai.jsp"/>
+        </action>
+        
+        <action name="xiugaiShujuForm" path="/weixiujiaofeiLogList" type="com.stock.yonghushuju.WeixiuJiaofeiAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/xufei/queryLog.jsp"/>
+        </action>
+        
+        <!-- 用户数据~~数据精确查询 -->
+        <action name="yonghuDataForm" path="/yonghuDataYunweiList" type="com.stock.yonghushuju.YonghuDataActionYunWei" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/yonghushuju/yunweiquery.jsp"/>
+        </action>
+       
+        <action name="yonghuDataForm" path="/jiaofeiTXYunweiList" type="com.stock.yonghushuju.JiaofeiXTActionYunWei" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/yonghushuju/yunweitixingquery.jsp"/>
+        </action>
+        
+         
+        <action name="yonghuDataForm" path="/weixiuDataList" type="com.stock.yonghushuju.YonghuDataWeiXiuAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/yonghushuju/queryWeiXiu.jsp"/>
+        </action>
+        
+        <action name="yonghuDataForm" path="/weixiuDataYunweiList" type="com.stock.yonghushuju.YonghuDataWeiXiuActionYunWei" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/yonghushuju/ywqueryWeiXiu.jsp"/>
+        </action>
+        
+        <action name="yonghuDataEntityForm" path="/weixiuDataEdit" type="com.stock.yonghushuju.WeixiuDataEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.edit" path="/yonghushuju/weixiudataedit.jsp"/>
+			<forward name="error.edit" path="/yonghushuju/weixiudataedit.jsp"/>
+			<forward name="shebei" path="/yonghushuju/weixiushebeiedit.jsp"/>
+			<forward name="showinfo" path="/yonghushuju/weixiudatainfo.jsp"/>
+			<forward name="success" path="/weixiuDataList.do?act=init"/>
+        </action>
+        
+      <!--   续费维修管理~~申请续费 -->
+        <action name="yonghuDataForm" path="/daijiaofeiDataList" type="com.stock.yonghushuju.DaijiaofeiDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/xufei/ask_xufei.jsp"/>
+        </action>
+        
+        <action name="yonghuDataForm" path="/daiweixiuDataList" type="com.stock.yonghushuju.DaiWeiXiuDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/xufei/ask_weixiu.jsp"/>
+        </action>
+        
+        <!-- create by 赵兴华 2015-01-19 修改密码和退订操作 -->
+        <action name="yonghuDataForm" path="/operateList" type="com.stock.yonghushuju.OperateAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/xufei/operateList.jsp"/>
+        </action>
+        <action name="yonghuDataForm" path="/dealOperateList" type="com.stock.yonghushuju.OperateAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/xufei/chuliOperateList.jsp"/>
+        </action>
+        
+        <!--续费维修管理~~处理续费 -->
+        <action name="yonghuDataForm" path="/chulidaijiaofeiDataList" type="com.stock.yonghushuju.DaijiaofeiDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/xufei/manage_xufei.jsp"/>
+        </action>
+        
+         <action name="yonghuDataForm" path="/chulidaiweixiuDataList" type="com.stock.yonghushuju.DaiWeiXiuDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/xufei/manage_weixiu.jsp"/>
+        </action>
+        
+        <action name="jiaofeiDataFrom" path="/shenqingDataEdit" type="com.stock.yonghushuju.YonghuDataEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/xufei/insert.jsp"/>
+			<forward name="init.changePwd" path="/xufei/changePwd.jsp"/>
+			<forward name="init.tuiding" path="/xufei/tuiding.jsp"/>
+
+			<forward name="init.insertweixiu" path="/xufei/insertweixiu.jsp"/>
+			<forward name="init.edit" path="/xufei/dataedit.jsp"/>
+			<forward name="init.editweixiu" path="/xufei/dataedit_weixiu.jsp"/>
+			<forward name="success"      path="/daijiaofeiDataList.do?act=init"/>
+			<forward name="error.insert" path="/xufei/insertweixiu.jsp"/>
+			<forward name="operateSuccess"      path="/operateList.do?act=init"/>
+			<forward name="success3"     path="/daiweixiuDataList.do?act=init"/>
+			<forward name="success1"     path="/chulidaijiaofeiDataList.do?act=init"/>
+			<forward name="success2"     path="/chulidaiweixiuDataList.do?act=init"/>
+			<forward name="changekdf" path="/"/>
+			<forward name="changekdlx" path="/"/>
+			<forward name="changetvf" path="/"/>
+			<forward name="changetvlx" path="/"/>
+			<forward name="changekdsj" path="/"/>
+			<forward name="changetvsj" path="/"/>
+			<forward name="changetjsj" path="/"/>
+        </action>
+        
+        <action name="jiaofeiDataFrom" path="/daijiaoFeidataImport" type="com.stock.yonghushuju.ImportDataAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/chulidaijiaofeiDataList.do?act=init"/>
+			<forward name="success1" path="/chulidaiweixiuDataList.do?act=init"/>
+			<forward name="success2" path="/dealOperateList.do?act=init"/>
+        </action>
+        
+    <!--     异步查询，查询小区的地址 -->
+        <action name="jiaofeiDataFrom" path="/allStu"  type="com.stock.yonghushuju.CasecadingMenuAction" parameter="act" validate="true" scope="request">   
+			<forward name="" path=""></forward>
+        </action>
+        
+        <!-- 异步获取出所有的用户账户信息  2015-01-15 -->
+        <action name="jiaofeiDataFrom" path="/countNum"  type="com.stock.yonghushuju.CasecadingMenuAction" parameter="act" validate="true" scope="request">   
+			<forward name="countNum" path="/"/>
+        </action>
+        
+        <!-- 异步获取出所选账户的有效时间  2015-05-26 -->
+        <action name="jiaofeiDataFrom" path="/countValtime"  type="com.stock.yonghushuju.GetValDateAction" parameter="act" validate="true" scope="request">   
+			<forward name="countNum" path="/"/>
+        </action>
+        
+        <action name="tietongDataForm" path="/tietongimport" type="com.stock.tietongshuju.ImportDataAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/yonghuDataList.do?act=init&amp;zhuangtai=0"/>
+        </action>
+        
+        <action name="yonghuDataForm" path="/tietongduizhangimport" type="com.stock.tietongshuju.ImportDataAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/yonghuDataList.do?act=init&amp;zhuangtai=0"/>
+        </action>
+    </action-mappings>
+   
+
+</struts-config>

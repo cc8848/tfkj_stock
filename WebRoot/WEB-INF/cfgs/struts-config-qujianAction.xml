@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="tongjiForms" type="com.stock.qujianguanli.TongjiForm" />
+		<form-bean name="chugongdanEditForms" type="com.stock.qujianguanli.ChugongdanEditForm" />
+    </form-beans>
+	
+    <action-mappings>
+        <action name="tongjiForms" path="/qujianList" type="com.stock.qujianguanli.TongjiAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/qujianguanli/query.jsp"/>
+        </action>
+        
+         <action name="tongjiForms" path="/qujianReport" type="com.stock.qujianguanli.TongJiReportAction" parameter="act" validate="true" scope="request">
+        </action>
+        
+         <action name="chugongdanEditForms" path="/qujianEdit" type="com.stock.qujianguanli.ChugongdanEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.edit" path="/qujianguanli/edit.jsp"/>
+			<forward name="success" path="/qujianList.do?act=init"/>
+        </action>
+    </action-mappings>
+    
+</struts-config>

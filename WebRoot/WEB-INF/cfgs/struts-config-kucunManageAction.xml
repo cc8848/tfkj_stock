@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="kucunForm" type="com.stock.kucun.KuncunForm" />
+		<form-bean name="zongkufangInfoForm" type="com.stock.kucun.ZongkufangInfoForm" />
+		<form-bean name="importDataForm" type="com.stock.yonghushuju.ImportDataForm" />
+    </form-beans>
+	
+    <action-mappings>
+       
+        <action name="kucunForm" path="/shebeirukuList" type="com.stock.kucun.KucunDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/kucun/kucun_shebei_ruku.jsp"/>
+			<forward name="success" path="/shebeirukuList.do?act=init"/>
+			<forward name="init.edit" path="/kucun/kucun_shebei_ruku_editinfo.jsp"/>
+        </action>
+        <action name="kucunForm" path="/shebeichukuList" type="com.stock.kucun.ChukuDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/kucun/kucun_shebei_chuku.jsp"/>
+			<forward name="success4" path="/kucun/kucun_shebei_select.jsp"></forward>
+			<forward name="success" path="/shebeichukuList.do?act=init"/>
+			<forward name="success1" path="/shebeichukuList.do?act=init"/>
+			<forward name="success2" path="/shebeianzhuangkuList.do?act=init"/>
+			<forward name="success3" path="/shebeiyichangkuList.do?act=init"/>
+			<forward name="init.edit" path="/kucun/kucun_shebei_xiaoquku_editinfo.jsp"/>
+        </action>
+        
+        <action name="kucunForm" path="/shebeianzhuangkuList" type="com.stock.kucun.AnZhuangkuDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/kucun/kucun_sb_anzhuangku.jsp"/>
+			<forward name="init.edit" path="/kucun/kucun_shebei_anzhuangku_editinfo.jsp"/>
+        </action>
+        
+         <action name="kucunForm" path="/shebeiyichangkuList" type="com.stock.kucun.YiChangkuDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/kucun/kucun_sb_yichangku.jsp"/>
+			<forward name="success" path="/shebeirukuList.do?act=init"/>
+			<forward name="success1" path="/shebeichukuList.do?act=init"/>
+			<forward name="init.edit1" path="/kucun/kucun_shebei_yichangku_editinfo.jsp"/>
+			<forward name="init.edit" path="/kucun/kucun_shebei_anzhuangku_editinfo.jsp"/>
+        </action>
+        
+        <action name="zongkufangInfoForm" path="/zongkufangInfoList" type="com.stock.kucun.ZongkufangInfoAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/kucun/zongkufang_info_list.jsp"/>
+		</action>
+		<action name="zongkufangInfoForm" path="/zongkufangLogList" type="com.stock.kucun.ZongkufangLogAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/kucun/zongkufang_log_list.jsp"/>
+		</action>
+		 <action name="zongkufangInfoForm" path="/zongkufangInfoEdit" type="com.stock.kucun.ZongkufangEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/kucun/zongkufang_info_edit.jsp"/>
+			<forward name="init.insert2" path="/kucun/zongkufang_log_edit.jsp"/>
+			<forward name="success" path="/zongkufangInfoList.do?act=init"/>
+		</action>
+		<action name="zongkufangInfoForm" path="/zongkufangHistoryList" type="com.stock.kucun.ZongkufangHistoryAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/kucun/zongkufang_history_list.jsp"/>
+		</action>
+        
+         <action name="kucunForm" path="/shebeichuku" type="com.stock.kucun.ImportShebeiDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/kucun/kucun_sbchuku.jsp"/>
+			<forward name="init1" path="/kucun/kucun_sbzhuangtai.jsp"/>
+			<forward name="success" path="/shebeirukuList.do?act=init"/>
+			<forward name="success1" path="/kucun/kucun_sbtoyichangku.jsp"/>
+        </action>
+        
+        <action name="importDataForm" path="/shebeidataUpload" type="com.stock.kucun.ImportShebeiDataAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/shebeirukuList.do?act=init"/>
+			<forward name="success1" path="/shebeichukuList.do?act=init"/>
+        </action>
+        
+         <action name="kucunForm" path="/shebeixinxi" type="com.stock.kucun.SheBeiZhuangTaiInfoAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/kucun/shebeixinxi.jsp"/>
+        </action>
+        
+         <action name="kucunForm" path="/shebeiEdite" type="com.stock.kucun.SheBeiDataEditAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/shebeirukuList.do?act=init"/>
+			<forward name="success1" path="/shebeichukuList.do?act=init"/>
+			<forward name="success2" path="/shebeianzhuangkuList.do?act=init"/>
+			<forward name="success3" path="/shebeiyichangkuList.do?act=init"/>
+        </action>
+        
+    </action-mappings>
+   
+</struts-config>

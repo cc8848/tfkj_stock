@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="yuyueForm" type="com.stock.yuyue.YuyueForm" />
+		<form-bean name="yuyueEidtForm" type="com.stock.yuyue.YuyueEidtForm" />
+    </form-beans>
+	
+    <action-mappings>
+        <action name="yuyueForm" path="/yuyueList" type="com.stock.yuyue.YuyueAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/yuyue/query.jsp"/>
+        </action>
+       
+       
+       <action name="yuyueEidtForm" path="/yuyueEdit" type="com.stock.yuyue.YuyueEidtAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/yuyue/insert.jsp"/>
+			<forward name="init.edit" path="/yuyue/edit.jsp"/>
+			<forward name="success" path="/yuyueList.do?act=init"/>
+			<forward name="error.insert" path="/yuyue/insert.jsp"/>
+			<forward name="error.edit" path="/yuyue/edit.jsp"/>
+        </action> 
+    </action-mappings>
+    
+</struts-config>

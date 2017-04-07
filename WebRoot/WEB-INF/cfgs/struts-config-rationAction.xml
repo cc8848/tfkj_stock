@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="rationForm" type="com.stock.ration.rationForm" />
+		<!-- <form-bean name="rationEntiyForm" type="com.stock.ration.rationEntiyForm" /> -->
+		<form-bean name="rationSecondForm" type="com.stock.ration.rationSecondForm" />
+		
+		<form-bean name="bangdingForm" type="com.stock.ration.bangdingForm" />
+    </form-beans>
+	
+    <action-mappings>
+        <action name="rationForm" path="/rationList" type="com.stock.ration.rationAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/ration/query.jsp"/>
+        </action>
+        <action name="rationSecondForm" path="/rationEdit" type="com.stock.ration.rationEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.edit" path="/ration/edit.jsp"/>
+			<forward name="success" path="/rationList.do?act=init"/>
+			<forward name="error.insert" path="/ration/insert.jsp"/>
+        </action>
+        
+        <action name="rationSecondForm" path="/bangding" type="com.stock.ration.bangdingshebeiAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/rationList.do?act=init"/>
+        </action>
+    </action-mappings>
+    
+</struts-config>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="userInfomacton" type="com.stock.userInfomation.UserInfomactonForm" />
+		<form-bean name="userInfoForm" type="com.stock.userInfomation.UserInfoForm" />
+		
+		<form-bean name="changeEquipForm" type="com.stock.userInfomation.ChangeEquipForm" />
+    </form-beans>
+	
+    <action-mappings>
+        <action name="userInfomacton" path="/userInfomactonList" type="com.stock.userInfomation.UserInfomactonAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/userInfomation/query.jsp"/>
+        </action>
+    	<action name="userInfomacton" path="/userInfomactonUpload" type="com.stock.userInfomation.UserInfomactonUploadAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/userInfomactonList.do?act=init"/>
+        </action>
+        <action name="userInfoForm" path="/userinfoEdit" type="com.stock.userInfomation.UserInfoEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.edit" path="/userInfomation/edit.jsp"/>
+			<forward name="success" path="/userInfomactonList.do?act=init"/>
+			<forward name="error.edit" path="/userInfomation/edit.jsp"/>
+			<forward name="showInfo" path="/userInfomation/showInfo.jsp"/>
+        </action>
+        
+        
+        <action name="changeEquipForm" path="/changeEquipList" type="com.stock.userInfomation.ChangeEquipAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/userInfomation/changeEquip.jsp"/>
+			<forward name="nostbmac" path="/userInfomactonList.do?act=init"/>
+        </action>
+         <action name="changeEquipForm" path="/changeEquipEdit" type="com.stock.userInfomation.ChangeEquipEditAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/userInfomactonList.do?act=init"/>
+        </action>
+        
+    </action-mappings>
+    
+</struts-config>

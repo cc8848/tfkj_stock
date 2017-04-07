@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="caiwuForm" type="com.stock.caiwuhedui.entity.CaiWuShujuForm" />
+		<form-bean name="zhangmuForm" type="com.stock.caiwuhedui.entity.ZhangMuForm" />
+    </form-beans>
+	
+    <action-mappings>
+        <action name="zhangmuForm" path="/moneymateList" type="com.stock.caiwuhedui.action.MoneyMateAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/caiwuhedui/moneymate.jsp"/>
+        </action>
+        <action name="zhangmuForm" path="/financingcheckList" type="com.stock.caiwuhedui.action.FinancingCheckAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/caiwuhedui/financingcheck.jsp"/>
+        </action>
+        <action name="zhangmuForm" path="/accountsmateList" type="com.stock.caiwuhedui.action.AccountsMateAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/caiwuhedui/accountsmate.jsp"/>
+        </action>
+        
+        <action name="zhangmuForm" path="/reportformsList" type="com.stock.caiwuhedui.action.ReportFormsAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/caiwuhedui/reportforms.jsp"/>
+        </action>
+        
+          <action name="zhangmuForm" path="/historyList" type="com.stock.caiwuhedui.action.HistoryZhangmuAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/caiwuhedui/historyZhangmu.jsp"/>
+        </action>
+        
+         <action name="zhangmuForm" path="/zhangmuDataInsert" type="com.stock.caiwuhedui.action.ImportDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/caiwuhedui/zhangmuInsert.jsp"/>
+			<forward name="success"     path="/moneymateList.do?act=init&amp;zhuangtai=0"/>
+			<forward name="success1"     path="/reportformsList.do?act=init&amp;zhuangtai=2"/>
+        </action>
+        
+        <action name="zhangmuForm" path="/zhangMuEdit" type="com.stock.caiwuhedui.action.ZhangMuEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/accountsmateList.do?act=query"/>
+			<forward name="init.hedui" path="/financingcheckList.do?act=init&amp;zhuangtai=1"/>
+            <forward name="reback.hedui" path="/financingcheckList.do?act=reback&amp;zhuangtai=1"/>
+        </action>
+        
+         <action name="zhangmuForm" path="/editeAccountsMateList" type="com.stock.caiwuhedui.action.ZhangMuDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/caiwuhedui/zhangmuEdite.jsp"/>
+			<forward name="success" path="/editeAccountsMateList.do?act=init"/>
+			<forward name="success1"  path="/moneymateList.do?act=init&amp;zhuangtai=0"/>
+        </action>
+        
+          <action name="zhangmuForm" path="/zhangmuDatasList" type="com.stock.caiwuhedui.action.ZhangMuDatasAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/caiwuhedui/zhangmuDatas.jsp"/>
+        </action>
+        
+        <action name="zhangmuForm" path="/depositVerifyList" type="com.stock.caiwuhedui.action.ZhangMuShenheDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/caiwuhedui/depositVerifyEdite.jsp"/>
+			<forward name="success" path="/depositVerifyList.do?act=init"/>
+        </action>
+    </action-mappings>
+   
+
+</struts-config>

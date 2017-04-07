@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="HuidanForm" type="com.stock.huidan.HuidanForm" />
+		<form-bean name="HuidanEntityForm" type="com.stock.huidan.HuidanEntityForm" />
+		<form-bean name="ImportDataForm" type="com.stock.yonghushuju.ImportDataForm" />
+		<form-bean name="PhotoUploadForm" type="com.stock.huidan.PhotoUploadForm" />
+    </form-beans>
+	
+    <action-mappings>
+       
+        <action name="HuidanForm" path="/huidandaoruList" type="com.stock.huidan.HuidanDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/huidan/huidanimp.jsp"/>
+			<forward name="success" path="/huidandaoruList.do?act=init"/>
+			<forward name="init.edit" path="/huidan/huidan_edit.jsp"/>
+			<forward name="del.detail" path="/huidan/huidan_look.jsp"/>
+			<forward name="gotoRadiusWangluo" path="/huidan/huidan_radius.jsp"/>
+        </action>
+       <action name="HuidanForm" path="/huidansubList" type="com.stock.huidan.HuidanSubAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/huidan/huidansub.jsp"/>
+			<forward name="success" path="/huidansubList.do?act=init"/>
+			<forward name="del.detail" path="/huidan/huidan_back.jsp"/>
+			<forward name="init.edit" path="/huidan/huidan_tijiao.jsp"/>
+        </action>
+        <action name="HuidanForm" path="/huidanerrorList" type="com.stock.huidan.HuidanJiucuoAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/huidan/huidanerror.jsp"/>
+			<forward name="success" path="/huidanerrorList.do?act=init"/>
+			<forward name="init.edit" path="/huidan/huidanerror_edit.jsp"/>
+			<forward name="chaifen" path="/huidan/huidan_kaipiaochaifen.jsp"/>
+        </action>
+        <action name="HuidanForm" path="/huidancheckList" type="com.stock.huidan.HuidanCheckDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/huidan/huidancheck.jsp"/>
+			<forward name="init1" path="/huidancheckList.do?act=init"/>
+			<forward name="init.edit" path="/huidan/huidanreview_edit.jsp"/>
+			<forward name="success" path="/huidancheckList.do?act=init"/>
+        </action>
+        <action name="HuidanForm" path="/huidancheckedList" type="com.stock.huidan.HuidanCheckedDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/huidan/huidanchecked.jsp"/>
+			<forward name="init1" path="/huidancheckedList.do?act=init"/>
+			<forward name="init.edit1" path="/huidan/huidan_checked_edit.jsp"/>
+        </action>
+        <action name="HuidanForm" path="/huidanauditList" type="com.stock.huidan.HuidanAuditDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/huidan/huidanaudit.jsp"/>
+			<forward name="init1" path="/huidanauditList.do?act=init"/>
+		</action>
+		<action name="HuidanForm" path="/qiegaiauditList" type="com.stock.huidan.QiegaiAuditDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/huidan/qiegaiaudit.jsp"/>
+			<forward name="init1" path="/qiegaiauditList.do?act=init"/>
+		</action>
+		<action name="PhotoUploadForm" path="/photouploadList" type="com.stock.huidan.PhotoUploadDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/huidan/photoupload.jsp"/>
+		</action>
+		<action name="PhotoUploadForm" path="/photouploadEdit" type="com.stock.huidan.PhotoUploadEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/huidan/photoview.jsp"/>
+			<forward name="toFTPview" path="/huidan/photoviewFTP.jsp"/>
+			<forward name="init.insert2" path="/huidan/photodoupload.jsp"/>
+			<forward name="error" path="/huidan/photodoupload.jsp"/>
+			<forward name="UPLOAD" path="/photouploadList.do?act=init"/>
+			<forward name="AUDIT" path="/photoauditList.do?act=init"/>
+			<forward name="autoclose" path="/huidan/autoclose.jsp"/>
+		</action>
+		<action name="PhotoUploadForm" path="/photoauditList" type="com.stock.huidan.PhotoAuditDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/huidan/photoaudit.jsp"/>
+		</action>
+        <action name="HuidanForm" path="/huidanreviewList" type="com.stock.huidan.HuidanReviewDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/huidan/huidanreview.jsp"/>
+			<forward name="init1" path="/huidanreviewList.do?act=init"/>
+        </action>
+        <action name="ImportDataForm" path="/huidandataUpload" type="com.stock.huidan.ImportHuidanDataAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/huidandaoruList.do?act=init"/>
+        </action>
+        
+         <action name="HuidanEntityForm" path="/huidanDataEdit" type="com.stock.huidan.HuidanDataEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.edit" path="/huidan/huidan_checked_info.jsp"/>
+        </action>
+        
+       <action name="HuidanForm" path="/huidanDaochu" type="com.stock.huidan.HuidanReportAction" parameter="act" validate="true" scope="request">
+        </action>
+        
+    </action-mappings>
+   
+
+</struts-config>

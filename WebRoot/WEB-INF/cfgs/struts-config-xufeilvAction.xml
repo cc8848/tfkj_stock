@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="xufeilvForm" type="com.stock.paigongdan.XufeilvForm" />
+    </form-beans>
+	<action-mappings>
+	 <action name="xufeilvForm" path="/xufeilv" type="com.stock.total.XufeilvAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/total/xufeilvtotal.jsp"/>
+			<forward name="success" path="/xufeilv.do?act=init"/>
+     </action>
+	</action-mappings>
+</struts-config>

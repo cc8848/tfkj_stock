@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="departmentForm" type="com.hrbank.business.department.DepartmentForm" />
+		<form-bean name="departmentConditionForm" type="com.hrbank.business.department.DepartmentConditionForm" />
+    </form-beans>
+	
+    <action-mappings>
+        <action name="departmentConditionForm" path="/departmentList" type="com.hrbank.business.department.DepartmentAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/department/query.jsp"/>
+        </action>
+		<action name="departmentForm" path="/departmentEdit" type="com.hrbank.business.department.DepartmentEditAction" parameter="act" validate="true" scope="request">
+			<forward name="init.insert" path="/department/insert.jsp"/>
+			<forward name="init.edit" path="/department/edit.jsp"/>
+			<forward name="success" path="/departmentList.do?act=init"/>
+			<forward name="error.insert" path="/department/insert.jsp"/>
+			<forward name="error.edit" path="/department/edit.jsp"/>
+        </action>
+    </action-mappings>
+    
+</struts-config>

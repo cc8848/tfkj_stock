@@ -1,0 +1,28 @@
+.ac_div{
+	border-right: #525252 2px solid; 
+	border-top: #525252 2px solid;
+	background: #ffffff; 
+	border-left: #525252 2px solid; 
+	color: #000000; 
+	border-bottom: #525252 2px solid; 
+	position: absolute; 
+	text-align: left;
+}
+.ac_change1{
+	background-color: #E8E8E8;
+	color:#000000;
+	font-size:12;
+	font-weight:normal;
+}
+.ac_change2{
+	background-color: #FFFFFF;
+	color:#000000;
+	font-size:12;
+	font-weight:normal;
+}
+.ac_change{
+	background-color: #3399FF;
+	color:#000000;
+	font-size:13;
+	font-weight:bold;
+}

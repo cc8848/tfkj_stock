@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+    <form-beans>
+        <form-bean name="mainForm" type="com.hrbank.business.main.MainForm"/>
+    </form-beans>
+    
+    <action-mappings>
+        <action name="mainForm" path="/main" type="com.hrbank.business.main.MainAction" parameter="act" validate="true" >
+			<forward name="success" path="/common/main.jsp"/>
+			<forward name="self" path="/common/welcome.jsp"/>
+        </action>
+    </action-mappings>
+    
+</struts-config>

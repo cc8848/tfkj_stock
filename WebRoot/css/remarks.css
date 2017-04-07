@@ -1,0 +1,114 @@
+/* CSS Document */
+body {
+  width:90%;
+  height:90%;
+  margin: 0;
+  padding: 0;
+  overflow-x:hidden;
+overflow-y:hidden;
+}
+.conten_top{
+	padding-left: 10px; 
+	font-size: 12px; 
+	filter: progid:dximagetransform.microsoft.gradient(gradienttype=0, startcolorstr=#ffffff, endcolorstr=#DFEFEE); 
+	color:#555555; 
+	padding-top: 8px; 
+	width:100%;
+	height:30px;
+	font-weight:bold;
+	border-bottom: #006633 1px solid;
+	z-index:2;
+	position:absolute;
+}
+#message_all{
+padding: 0;
+width:100%;
+height:560px;
+overflow-x:hidden;
+overflow-y:auto;
+word-break:break-all;
+scrollbar-face-color: #EEF5FA;
+scrollbar-shadow-color: #ffffff; 
+scrollbar-highlight-color:#ffffff; 
+scrollbar-3dlight-color: #ffffff;  
+scrollbar-darkshadow-color: #ffffff; 
+scrollbar-track-color:#ffffff; 
+scrollbar-arrow-color:#ffffff;
+position:fixed;
+}
+#mesMain{
+padding-top:30px;
+width:100%;
+}
+#mesTextArea{
+width:100%;
+height:160px;
+font-size:12px;
+font-family:"宋体";
+background-color:#f5f4f4;
+PADDING-BOTTOM: 10px;
+BORDER-TOP: #ccc 2px solid;
+border-bottom:#ccc 2px solid;
+}
+.newTitle{
+padding-top:5px;
+padding-left:5px;
+font-size:13px;
+font-weight:bold;
+
+}
+#mesQuery1{
+width:100%;
+height:160px;
+font-size:12px;
+font-family:"宋体";
+background-color:#ffffff;
+PADDING-BOTTOM: 10px;
+BORDER-TOP: #ccc 2px solid;
+border-bottom:#ccc 2px solid;
+}
+.mesQueryTit{
+padding-top:5px;
+padding-left:2px;
+font-size:12px;
+font-weight:bold;
+padding-bottom:5px;
+border-bottom:#DBE6F7 2px solid;
+}
+.mesType{
+width:98%;
+height:20px;
+padding-top:4px;
+padding-left:5px;
+
+}
+.mesCon{
+width:98%;
+height:20px;
+padding-top:4px;
+padding-left:5px;
+}
+.mesConInfo{
+padding-top:4px;
+}
+.commonButton{
+	
+	font-family: "Tahoma", "";
+    font-size: 10px; color: #0066cc;
+    border: 0px #93bee2 solid;
+    BORDER-BOTTOM: #93bee2 0px solid; 
+    BORDER-LEFT: #93bee2 0px solid; 
+    BORDER-RIGHT: #93bee2 0px solid; 
+    BORDER-TOP: #93bee2 0px solid;
+    background:url("../img/button.jpg") no-repeat;
+	color:#FFFFFF;
+    CURSOR: hand;
+    font-style: normal ;
+    height: 22px;
+    width: 58px;
+	padding-left: 10px;
+	vertical-align:middle;
+	text-align:center;
+
+}
+

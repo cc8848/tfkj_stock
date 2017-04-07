@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="totalForm" type="com.stock.total.TotalForm" />
+    </form-beans>
+	
+    <action-mappings>
+        <action name="totalForm" path="/totalList" type="com.stock.total.TotalAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/total/query.jsp"/>
+        </action>
+        
+        <action name="totalForm" path="/incometotalList" type="com.stock.total.TotalIncomeAction" 
+        		parameter="act" validate="true" scope="request">
+			<forward name="init" path="/total/incometotal.jsp"/>
+        </action>
+        
+        <action name="totalForm" path="/shoufeitotalList" type="com.stock.total.TotalShoufeiAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/total/shoufeitotal.jsp"/>
+        </action>
+        
+         <action name="totalForm" path="/haocaitotalList" type="com.stock.total.TotalHaocaiAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/total/haocaitotal.jsp"/>
+        </action>
+        
+         <action name="totalForm" path="/shigongrenList" type="com.stock.total.TotalShigongrenAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/total/shigongrentotal.jsp"/>
+        </action>
+        
+         <action name="totalForm" path="/gongzuoliangList" type="com.stock.total.TotalGongZuoLiangAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/total/gongzuoliang.jsp"/>
+        </action>
+        
+        <action name="totalForm" path="/importExcelList" type="com.stock.total.ImportDataAction" parameter="act" validate="true" scope="request">
+			<forward name="" path=""></forward>
+        </action>
+        
+        <action name="totalForm" path="/serchSheQuJineList" type="com.stock.total.SheQuJineDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/total/shequjine.jsp"/>
+			<forward name="scuess" path="/serchSheQuJineList.do?act=init"/>
+        </action>
+        
+        <action name="totalForm" path="/serchYunYingShangList" type="com.stock.total.YunYingShangDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/total/yunyingshang.jsp"/>
+			<forward name="scuess" path="/serchYunYingShangList.do?act=init"/>
+        </action>
+        <action name="totalForm" path="/mingxitotalList" type="com.stock.total.TotalRibaoMingxiAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/total/ribaomingxitotal.jsp"/>
+        </action>
+        <action name="totalForm" path="/mingxitotalListDaochu" type="com.stock.total.TotalRibaoMingxiAction" parameter="act" validate="true" scope="request">
+        	<forward name="init" path="/total/ribaomingxitotaldaochu.jsp"/>
+        </action>
+        <action name="totalForm" path="/shuliangtotalList" type="com.stock.total.TotalRibaoShuliangAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/total/ribaoshuliangtotal.jsp"/>
+        </action>
+        <action name="totalForm" path="/shuliangtotalListDaochu" type="com.stock.total.TotalRibaoShuliangAction" parameter="act" validate="true" scope="request">
+        	<forward name="init" path="/total/ribaoshuliangtotaldaochu.jsp"/>
+        </action>
+        <action name="totalForm" path="/shourutotalList" type="com.stock.total.TotalRibaoShouruAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/total/ribaoshourutotal.jsp"/>
+        </action>
+        <action name="totalForm" path="/shourutotalListDaochu" type="com.stock.total.TotalRibaoShouruAction" parameter="act" validate="true" scope="request">
+        	<forward name="init" path="/total/ribaoshourutotaldaochu.jsp"/>
+        </action>
+    </action-mappings>
+    
+    
+    
+</struts-config>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+    
+	<form-beans>
+		<form-bean name="fenPeiIpForm" type="com.stock.fenPeiIp.FeiPeiIpForm" />
+		<form-bean name="fenPeiFenGuangGuiZeForm" type="com.stock.fenPeiIp.FenPeiFenGuangGuiZeForm" />
+		<form-bean name="keFenPeiFenGuangForm" type="com.stock.fenPeiIp.KeFenPeiFenGuangForm" />
+    </form-beans>
+	
+    <action-mappings>
+        <action name="fenPeiIpForm" path="/fenPeiIpEdit" type="com.stock.fenPeiIp.FenPeiIpAction" parameter="act" validate="true" scope="request">
+			<forward name="init.edit" path="/fenPeiIp/edit.jsp"/>
+			<forward name="success" path="/rationList.do?act=init"/>
+			<forward name="error.edit" path="/fenPeiIp/edit.jsp"/>
+        </action>
+        
+        <action name="fenPeiFenGuangGuiZeForm" path="/fenguangguizeList" type="com.stock.fenPeiIp.FenGuangGuiZeDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/fenPeiIp/fenguangguize.jsp"/>
+		</action>
+		<action name="fenPeiFenGuangGuiZeForm" path="/fenguangguizeEdit" type="com.stock.fenPeiIp.FenGuangGuiZeEditAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/fenguangguizeList.do?act=init"/>
+			<forward name="init.insert" path="/fenPeiIp/fenguangguizeEdit.jsp"/>
+		</action>
+		<action name="keFenPeiFenGuangForm" path="/kefenpeifenguangList" type="com.stock.fenPeiIp.KeFenPeiFenGuangDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/fenPeiIp/kefenpeifg.jsp"/>
+		</action>
+		<action name="keFenPeiFenGuangForm" path="/kefenpeifenguangEdit" type="com.stock.fenPeiIp.KeFenPeiFenGuangEditAction" parameter="act" validate="true" scope="request">
+			<forward name="success" path="/kefenpeifenguangList.do?act=init"/>
+			<forward name="init.insert" path="/fenPeiIp/kefenpeifgEdit.jsp"/>
+		</action>
+		
+		<action name="yiFenPeiFenGuangForm" path="/yifenpeifenguangList" type="com.stock.fenPeiIp.YiFenPeiFenGuangDataAction" parameter="act" validate="true" scope="request">
+			<forward name="init" path="/fenPeiIp/yifenpeifg.jsp"/>
+		</action>
+        
+        
+    </action-mappings>
+    
+</struts-config>

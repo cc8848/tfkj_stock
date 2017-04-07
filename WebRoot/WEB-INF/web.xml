@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>/WEB-INF/cfgs/struts-config.xml
+			     ,/WEB-INF/cfgs/struts-config-login.xml
+			     ,/WEB-INF/cfgs/struts-config-logout.xml
+			     ,/WEB-INF/cfgs/struts-config-main.xml
+			     ,/WEB-INF/cfgs/struts-config-password.xml
+			     ,/WEB-INF/cfgs/struts-config-employee.xml
+			     ,/WEB-INF/cfgs/struts-config-department.xml
+			     
+                 ,/WEB-INF/cfgs/struts-config-rationAction.xml
+			     ,/WEB-INF/cfgs/struts-config-equipStockAction.xml
+			     ,/WEB-INF/cfgs/struts-config-paiGongDanAction.xml
+			     ,/WEB-INF/cfgs/struts-config-equipStockChuKuAction.xml
+			     ,/WEB-INF/cfgs/struts-config-fenpeiIpAction.xml
+			     ,/WEB-INF/cfgs/struts-config-tongjiAction.xml
+			     ,/WEB-INF/cfgs/struts-config-userInfomation.xml
+			     ,/WEB-INF/cfgs/struts-config-qujianAction.xml
+			     ,/WEB-INF/cfgs/struts-config-chugongdanHistoryAction.xml
+			     ,/WEB-INF/cfgs/struts-config-qujianHistoryAction.xml
+			     ,/WEB-INF/cfgs/struts-config-yuyueAction.xml
+			     ,/WEB-INF/cfgs/struts-config-yuyuequeryAction.xml
+			     ,/WEB-INF/cfgs/struts-config-telNumberAction.xml
+			     ,/WEB-INF/cfgs/struts-config-selecttelNumberAction.xml
+			     ,/WEB-INF/cfgs/struts-config-yonghuDataAction.xml
+			     ,/WEB-INF/cfgs/struts-config-totalAction.xml
+			     ,/WEB-INF/cfgs/struts-config-caiwuCheckAction.xml
+			     ,/WEB-INF/cfgs/struts-config-kucunManageAction.xml
+			     ,/WEB-INF/cfgs/struts-config-huidanManageAction.xml
+				 ,/WEB-INF/cfgs/struts-config-xufeilvAction.xml</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>action_tmp</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>/WEB-INF/cfgs/struts-config.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <init-param>
+      <param-name>detail</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>com.takucin.aceeci.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>GBK</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <listener>
+    <listener-class>com.takucin.aceeci.listener.GlobalServletContextListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.stock.userCount.SessionListener</listener-class>
+  </listener>
+  <!-- 启动WebService服务 
+	<listener> 
+		<listener-class>com.telecomService.ClientListener</listener-class> 
+	</listener>
+	-->
+  <!-- 启动Check服务 -->
+  <!--<listener>-->
+    <!--<listener-class>com.checkState.CheckListener</listener-class>-->
+  <!--</listener>-->
+  <!--&lt;!&ndash; 铁通数据定期导入 START &ndash;&gt;-->
+  <!--<listener>-->
+    <!--<listener-class>com.stock.tietongshuju.AutoUploadTaskListener</listener-class>-->
+  <!--</listener>-->
+  <!--&lt;!&ndash; 铁通数据定期导入 END &ndash;&gt;-->
+  <!--<listener>-->
+    <!--<listener-class>com.stock.task.listener.NFDFlightDataTaskListener</listener-class>-->
+  <!--</listener>-->
+  <!--&lt;!&ndash;网上续费自动执行的定时任务&ndash;&gt;-->
+  <!--<listener>-->
+    <!--<listener-class>com.stock.renewtask.listener.RenewTaskListener</listener-class>-->
+  <!--</listener>-->
+
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <session-config>
+    <session-timeout>360</session-timeout>
+  </session-config>
+  <!-- dwr -->
+  <servlet>
+    <servlet-name>dwr-invoker</servlet-name>
+    <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dwr-invoker</servlet-name>
+    <url-pattern>/dwr/*</url-pattern>
+  </servlet-mapping>
+  <!-- end -->
+</web-app>
+
