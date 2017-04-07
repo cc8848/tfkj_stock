@@ -36,7 +36,6 @@ public abstract class BaseAction extends DispatchAction {
 	public static String FW_INIT_INSERT = "init.insert";
 	public static String FW_INIT_CHANGEPWD = "init.changePwd";
 	public static String FW_INIT_TUIDING = "init.tuiding";
-	public static String FW_INIT_TUIDING2 = "init.tuiding2";
 	public static String FW_INIT_INSERT2 = "init.insert2";
 	public static String FW_LOGIN_TIMEOUT = "login.timeout";
 	public static String FW_ERROR_QUERY = "error.query";

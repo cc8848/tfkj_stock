@@ -77,61 +77,7 @@ public class YonghuDataEntityForm extends ActionForm {
 	private String shoukuanshijian;
 	
 	private String fenguangID;
-	private String tuidingshijian;
-	private String tuidingyuanyin;
-	private String tuikuandai;
-	private String tuionu;
-	private String tuijidinghe;
-	private String tuiyajin;
-
-	public String getTuikuandai() {
-		return tuikuandai;
-	}
-
-	public void setTuikuandai(String tuikuandai) {
-		this.tuikuandai = tuikuandai;
-	}
-
-	public String getTuionu() {
-		return tuionu;
-	}
-
-	public void setTuionu(String tuionu) {
-		this.tuionu = tuionu;
-	}
-
-	public String getTuijidinghe() {
-		return tuijidinghe;
-	}
-
-	public void setTuijidinghe(String tuijidinghe) {
-		this.tuijidinghe = tuijidinghe;
-	}
-
-	public String getTuiyajin() {
-		return tuiyajin;
-	}
-
-	public void setTuiyajin(String tuiyajin) {
-		this.tuiyajin = tuiyajin;
-	}
-
-	public String getTuidingshijian() {
-		return tuidingshijian;
-	}
-
-	public void setTuidingshijian(String tuidingshijian) {
-		this.tuidingshijian = tuidingshijian;
-	}
-
-	public String getTuidingyuanyin() {
-		return tuidingyuanyin;
-	}
-
-	public void setTuidingyuanyin(String tuidingyuanyin) {
-		this.tuidingyuanyin = tuidingyuanyin;
-	}
-
+	
 	public String getPipeizhuangtai() {
 		return pipeizhuangtai;
 	}

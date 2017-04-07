@@ -172,6 +172,4 @@ public class ErrorConstant {
 	public static final String DOWN_BIDUI_ANZHUANG = "DOWN_BIDUI_ANZHUANG";// 已安装比对
 	public static final String SUBMIT_PIPEI_STATE = "SUBMIT_PIPEI_STATE";
 	public static final String SUBMIT_PIPEI_UPDATE_ERROR = "SUBMIT_PIPEI_UPDATE_ERROR";
-	public static final String TUIDING_ERROR1="TUIDING_ERROR1";
 }
-

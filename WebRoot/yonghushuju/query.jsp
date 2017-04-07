@@ -37,14 +37,7 @@
 		<jsp:include page="/common/commonMessage.jsp" />
 		<style>
 			form {padding:0;margin:0;border:0}
-
-		</style>
-		<script type="application/javascript">
-			function tuiding(){
-				alert("1");
-			}
-
-		</script>
+		</style> 
 	</head>
 	<body onload="init()">
 	<div style="height:440px;">
@@ -205,9 +198,6 @@
 							
 							<td align="right">
 								<input type="button" value="查询" class="commonButton" onclick="commonSubmit('yonghuDataList.do?act=query')" />
-							</td>
-							<td align="right">
-								<input type="button" value="生成退订" class="commonButton tuiding" onclick="commonCheckSubmit2('yonghuDataEdit.do?act=initTuiding2','UUID','请选择待编辑的用户数据')" />
 							</td>
 						</tr>
 					</table>

@@ -12,7 +12,7 @@
 		<form-bean name="xiugaiShujuForm" type="com.stock.yonghushuju.XiugaiShujuForm" />
 		<form-bean name="jiaofeiDataFrom" type="com.stock.yonghushuju.JiaofeiDataFrom" />
 		<form-bean name="tietongDataForm" type="com.stock.yonghushuju.TietongDataForm" />
-
+		
     </form-beans>
 	
     <action-mappings>
@@ -25,7 +25,6 @@
 			<forward name="shebei" path="/yonghushuju/shebeiedit.jsp"/>
 			<forward name="showinfo" path="/yonghushuju/datainfo.jsp"/>
 			<forward name="success" path="/yonghuDataList.do?act=init"/>
-			<forward name="init.tuiding2" path="/yonghushuju/tuiding2.jsp"/>
         </action>
         <action name="yonghuDataForm" path="/jiaofeiTXList" type="com.stock.yonghushuju.JiaofeiXTAction" parameter="act" validate="true" scope="request">
 			<forward name="init" path="/yonghushuju/tixingquery.jsp"/>
@@ -112,7 +111,6 @@
 			<forward name="init.insert" path="/xufei/insert.jsp"/>
 			<forward name="init.changePwd" path="/xufei/changePwd.jsp"/>
 			<forward name="init.tuiding" path="/xufei/tuiding.jsp"/>
-
 			<forward name="init.insertweixiu" path="/xufei/insertweixiu.jsp"/>
 			<forward name="init.edit" path="/xufei/dataedit.jsp"/>
 			<forward name="init.editweixiu" path="/xufei/dataedit_weixiu.jsp"/>
