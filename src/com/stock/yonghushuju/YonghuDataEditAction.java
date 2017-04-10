@@ -406,35 +406,6 @@ public class YonghuDataEditAction extends BusinessAction {
 
 	return mapping.findForward("showinfo");
     }
-
-    /**
-     * 跳转到添加申请页面 续费维修管理----申请续费----申请续费按钮之后页面
-     * 
-     * @param mapping
-     * @param form
-     * @param request
-     * @param response
-     * @return
-     * @throws Exception
-     */
-    public ActionForward initInsert(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	List<CommonModule> xiaoquList = service2.getXiaoQuCodeAll();
-	List<CommonModule> shichangList = service2.getShichangAll();
-	List<CommonModule> shichangtvList = service2.getShichangtvAll();
-	// List<CommonModule> wangluoList = service2.getRadiusWangluo();
-	JiaofeiDataFrom f = (JiaofeiDataFrom) form;
-	if (f.getNowdata() == null || f.getNowdata().equals("")) {
-	    f.setNowdata(Common.getDate("yyyy-MM-dd HH:mm:ss"));
-	}
-	if (f.getShoukuanshijian() == null || f.getShoukuanshijian().equals("")) {
-	    f.setShoukuanshijian(Common.getDate("yyyy-MM-dd"));
-	}
-	f.setXiaoquList(xiaoquList);
-	f.setShichangList(shichangList);
-	f.setShichangtvList(shichangtvList);
-	return mapping.findForward(FW_INIT_INSERT);
-    }
-
     /**
      * 
      * @param mapping
@@ -646,54 +617,7 @@ public class YonghuDataEditAction extends BusinessAction {
 	return mapping.findForward("init.insertweixiu");
     }
 
-    public ActionForward insertDaiJiaofei(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	ImportDataService serviceData = new ImportDataService();
-	String countNum = request.getParameter("countNum");
-	countNum = java.net.URLDecoder.decode(countNum, "utf-8");
-	JiaofeiDataFrom jfForm = (JiaofeiDataFrom) form;
-	ParameterSet set = new ParameterSet();
-    set.add("xiaoqu", "@xiaoqu", jfForm.getXiaoqu());
-    set.add("dizhi", "@dizhi", "%" + jfForm.getDizhi() + "%");
-    if (!"".equals(jfForm.getDianshi()) && !"0".equals(jfForm.getDianshi()) && null != jfForm.getDianshi()) {
-    	set.add("dianhuaip", "@dianhuaip", countNum);
-	} else if (!"".equals(jfForm.getWangluo()) && !"0".equals(jfForm.getWangluo()) && null != jfForm.getWangluo()) {
-		set.add("wangluoip", "@wangluoip", countNum);
-	}
-    
-    DataSet<DataRow> executeQuery = dao.executeQuery("findCounNum", set);
-    String stringyouxiao = "";
-    for (int i = 0; i < executeQuery.size(); i++) {
-		DataRow obj = executeQuery.get(i);
-		String wangluoip = obj.getDataElement("wangluoip").getString();
-		String dianshiip = obj.getDataElement("dianhuaip").getString();
-		String wangluo = obj.getDataElement("wangluo").getString();
-		String dianshi = obj.getDataElement("dianshi").getString();
-		String youxiaoshijian = obj.getDataElement("youxiaoshijian").getString();
-		Date youxiaodate =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(youxiaoshijian);
-		stringyouxiao = new SimpleDateFormat("yyyy-MM-dd").format(youxiaodate);
-		if (countNum.equals(wangluoip)&&(!"".equals(jfForm.getWangluo()) && !"0".equals(jfForm.getWangluo()) && null != jfForm.getWangluo())) {
-			stringyouxiao = wangluo +","+ stringyouxiao+"/";
-		}else if (countNum.equals(dianshiip)&&(!"".equals(jfForm.getDianshi()) && !"0".equals(jfForm.getDianshi()) && null != jfForm.getDianshi())) {
-			stringyouxiao = dianshi +","+ stringyouxiao+"/";
-		}
-    }
-    
-	jfForm.setYewu(stringyouxiao+jfForm.getYewu());
-	if (!"".equals(jfForm.getDianshi()) && !"0".equals(jfForm.getDianshi()) && null != jfForm.getDianshi()) {
-	    jfForm.setDianhuaip(countNum);
-	} else if (!"".equals(jfForm.getWangluo()) && !"0".equals(jfForm.getWangluo()) && null != jfForm.getWangluo()) {
-	    jfForm.setWangluoip(countNum);
-	}
 
-	String result = serviceData.insertDaijiaofei((JiaofeiDataFrom) form);
-	if (saveMessage(result, request)) {
-	    List<CommonModule> xiaoquList = service2.getXiaoQuCodeAll();
-	    JiaofeiDataFrom f = (JiaofeiDataFrom) form;
-	    f.setXiaoquList(xiaoquList);
-	    return mapping.findForward(FW_ERROR_INSERT);
-	}
-	return mapping.findForward(FW_SUCCESS);
-    }
 
     /**
      * 插入待修改密码的数据

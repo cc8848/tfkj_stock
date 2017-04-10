@@ -93,7 +93,25 @@ public class JiaofeiDataFrom  extends ActionForm {
 	
 	private String beishuselect;
 	private String beishutype;
-	
+
+
+	/**
+	 * 续费类型
+	 * 1 工单系统续费
+	 * 2 网上续费
+	 * 3 快速续费
+	 * @return
+	 */
+	private String sourceType;
+
+	public String getSourceType() {
+		return sourceType;
+	}
+
+	public void setSourceType(String sourceType) {
+		this.sourceType = sourceType;
+	}
+
 	public String getShichangRadius() {
 		return shichangRadius;
 	}

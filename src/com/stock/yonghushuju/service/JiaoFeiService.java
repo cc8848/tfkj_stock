@@ -2,6 +2,7 @@ package com.stock.yonghushuju.service;
 
 import com.hrbank.business.common.CommonDao;
 import com.hrbank.business.common.CommonMessage;
+import com.hrbank.business.common.Constant;
 import com.hrbank.business.common.ErrorConstant;
 import com.hrbank.business.frame.BusinessService;
 import com.stock.util.IptvWebService;
@@ -21,6 +22,7 @@ import com.webService.WebServiceMethods;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.poi.util.StringUtil;
+import org.apache.struts.action.ActionForm;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,6 +34,144 @@ public class JiaoFeiService extends BusinessService {
     private CommonDao dao = new CommonDao();
     private Log log = LogFactory.getLog(this.getClass());
     private IptvWebService iptvWebService = new IptvWebService();
+
+
+    /**
+     * 保存续费申请
+     * @param countNum  账号
+     * @param form
+     * @return
+     * @throws Exception
+     */
+    public String saveApply(String countNum,ActionForm form) throws  Exception{
+
+
+//        先根据账号小区地址取到本条已安装数据
+        countNum = java.net.URLDecoder.decode(countNum, "utf-8");
+        JiaofeiDataFrom jfForm = (JiaofeiDataFrom) form;
+        ParameterSet set = new ParameterSet();
+        set.add("xiaoqu", "@xiaoqu", jfForm.getXiaoqu());
+        set.add("dizhi", "@dizhi", "%" + jfForm.getDizhi() + "%");
+        if (!"".equals(jfForm.getDianshi()) && !"0".equals(jfForm.getDianshi()) && null != jfForm.getDianshi()) {
+            set.add("dianhuaip", "@dianhuaip", countNum);
+        } else if (!"".equals(jfForm.getWangluo()) && !"0".equals(jfForm.getWangluo()) && null != jfForm.getWangluo()) {
+            set.add("wangluoip", "@wangluoip", countNum);
+        }
+
+        DataSet<DataRow> executeQuery =dao.executeQuery("findCounNum", set);
+
+
+//        计算有效时间
+        String stringyouxiao = "";
+        for (int i = 0; i < executeQuery.size(); i++) {
+            DataRow obj = executeQuery.get(i);
+            String wangluoip = obj.getDataElement("wangluoip").getString();
+            String dianshiip = obj.getDataElement("dianhuaip").getString();
+            String wangluo = obj.getDataElement("wangluo").getString();
+            String dianshi = obj.getDataElement("dianshi").getString();
+            String youxiaoshijian = obj.getDataElement("youxiaoshijian").getString();
+            Date youxiaodate =  new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(youxiaoshijian);
+            stringyouxiao = new SimpleDateFormat("yyyy-MM-dd").format(youxiaodate);
+            if (countNum.equals(wangluoip)&&(!"".equals(jfForm.getWangluo()) && !"0".equals(jfForm.getWangluo()) && null != jfForm.getWangluo())) {
+                stringyouxiao = wangluo +","+ stringyouxiao+"/";
+            }else if (countNum.equals(dianshiip)&&(!"".equals(jfForm.getDianshi()) && !"0".equals(jfForm.getDianshi()) && null != jfForm.getDianshi())) {
+                stringyouxiao = dianshi +","+ stringyouxiao+"/";
+            }
+        }
+
+//        生成到数据库
+        jfForm.setYewu(stringyouxiao+jfForm.getYewu());
+        if (!"".equals(jfForm.getDianshi()) && !"0".equals(jfForm.getDianshi()) && null != jfForm.getDianshi()) {
+            jfForm.setDianhuaip(countNum);
+        } else if (!"".equals(jfForm.getWangluo()) && !"0".equals(jfForm.getWangluo()) && null != jfForm.getWangluo()) {
+            jfForm.setWangluoip(countNum);
+        }
+        return this.insertDaijiaofei((JiaofeiDataFrom) form);
+    }
+
+    /**
+     * 执行保存
+     * @param form
+     * @return
+     * @throws Exception
+     */
+    public String insertDaijiaofei(JiaofeiDataFrom form) throws Exception {
+        // DataRow dataRow = getDaijiaofei(form);
+	/*
+	 * if(dataRow!=null){ return ErrorConstant.YUYUEEXIST; }
+	 */
+        try {
+            openTransaction();
+
+            ParameterModel model = new ParameterModel();
+            model.put("xiaoqu", form.getXiaoqu());
+            model.put("dizhi", form.getDizhi());
+            model.put("yonghuzhuangtai", "待缴费");
+            if (form.getWangluo().equals("")) {
+                form.setWangluo("0");
+            }
+            model.put("wangluo", form.getWangluo());
+            if (form.getDianshi().equals("")) {
+                form.setDianshi("0");
+            }
+
+            // model.put("dianshiip", form.getDianshiip());
+            model.put("wangluoip", form.getWangluoip());
+            model.put("dianhuaip", form.getDianhuaip());
+
+            model.put("dianshi", form.getDianshi());
+            model.put("dianhua", form.getDianhua());
+            model.put("kaijishijian", form.getKaijishijian());
+            model.put("tingjishijian", form.getTingjishijian());
+            // 20141027billy新增有效时间的存储功能
+            model.put("youxiaoshijian", form.getTingjishijian());
+            model.put("kuandaifei", Integer.parseInt(form.getKuandaifei()));
+            model.put("shoushifei", Integer.parseInt(form.getShoushifei()));
+            model.put("nianfei", Integer.parseInt(form.getNianfei()));
+            model.put("onuyj", Integer.parseInt(form.getOnuyj()));
+            model.put("jidingheyj", Integer.parseInt(form.getJidingheyj()));
+            model.put("zongshoufei", form.getZongshoufei());
+            String shichang = form.getShichang();
+            String shichangtv = form.getShichangtv();
+            String dianhua = form.getDianhua();
+            if(!"1".equals(form.getBeishuselect())) {
+                form.setYewu(form.getYewu()+"/【资费调整"+form.getBeishuselect()+"倍】");
+            }
+            if("1".equals(form.getBeishutype())) {
+                form.setYewu(form.getYewu()+"/【升级或特殊资费】");
+            }else if("2".equals(form.getBeishutype())) {
+                form.setYewu(form.getYewu()+"/【八折】");
+            }else if("3".equals(form.getBeishutype())) {
+                form.setYewu(form.getYewu()+"/【特批免费】");
+            }
+            if (shichang == null && shichangtv == null && dianhua == null) {
+                model.put("yewu", form.getYewu());
+            } else if (shichang != null) {
+                model.put("yewu", form.getYewu() + "/" + shichang);
+            } else if (dianhua != null) {
+                model.put("yewu", form.getYewu());
+            } else {
+                model.put("yewu", form.getYewu() + "/" + shichangtv);
+            }
+
+            model.put("shoujubenhao", form.getShoujuhao());
+            model.put("shigongren", form.getShigongren());
+            model.put("createdt", form.getNowdata());
+            model.put("kaipiaoxinxi", form.getKaipiaoxinxi());
+            model.put("shoukuanshijian", form.getShoukuanshijian());
+            model.put("beiyong1", form.getShichangRadius());
+            model.put("yunyingshang", form.getYunyingshang());
+            model.put("beizhuhuizong", form.getBeizhuhuizong() + " 操作人:" + getUserInfo().getEmployeeName() + " 申请时间：" + form.getNowdata());
+            dao.insert("yonghushuju", model);
+
+            commit();
+        } catch (Exception e) {
+            rollback();
+            log.error(e);
+            throw e;
+        }
+        return Constant.SUCCESS;
+    }
 
 
     public CommonMessage approve(JiaofeiDataFrom jiaofeiDataFrom) throws Exception {

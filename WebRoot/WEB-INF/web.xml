@@ -32,6 +32,7 @@
 			     ,/WEB-INF/cfgs/struts-config-caiwuCheckAction.xml
 			     ,/WEB-INF/cfgs/struts-config-kucunManageAction.xml
 			     ,/WEB-INF/cfgs/struts-config-huidanManageAction.xml
+                 ,/WEB-INF/cfgs/struts-config-jiaofeiAction.xml
 				 ,/WEB-INF/cfgs/struts-config-xufeilvAction.xml</param-value>
     </init-param>
     <load-on-startup>2</load-on-startup>

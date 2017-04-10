@@ -29,6 +29,24 @@
 		<jsp:include page="/common/commonMessage.jsp" />
 		<style>
 			form {padding:0;margin:0;border:0}
+			.button1{
+				font-family: "Tahoma", "";
+				font-size: 11px; color: black;
+				border: 0px #93bee2 solid;
+				BORDER-BOTTOM: #93bee2 0px solid;
+				BORDER-LEFT: #93bee2 0px solid;
+				BORDER-RIGHT: #93bee2 0px solid;
+				BORDER-TOP: #93bee2 0px solid;
+				color:#FFFFFF;
+				background-color: green;
+				CURSOR: hand;
+				font-style: normal ;
+				height: 22px;
+				width: 65px;
+				padding-left: 10px;
+				vertical-align:middle;
+				text-align:center;
+			}
 		</style> 
 	</head>
 	<body onload="init()">
@@ -215,8 +233,11 @@
 				<!-- 查询结果 end -->
 				<!-- button -->
 				<div id="buttonC" name="button" class="content_button" >
-				  <html:button property="btnSave" value="申请续费" styleClass="commonButton2" onclick="commonSubmit('shenqingDataEdit.do?act=initInsert')"/>
-			    </div>
+				  <html:button property="btnSave" value="申请续费" styleClass="commonButton2" onclick="commonSubmit('jiaofei.do?act=form&sourceType=1')"/>
+					<html:button property="btnSave2" value="快速续费" styleClass="button1" onclick="commonSubmit('jiaofei.do?act=form&sourceType=2')"/>
+
+
+				</div>
 			</div>
 		</html:form>
 	</div>

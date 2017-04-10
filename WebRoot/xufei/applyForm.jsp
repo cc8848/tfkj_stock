@@ -801,7 +801,7 @@
 	<script type="text/javascript">
 	function sub(){
 		if(checkInput()){
-			commonSubmit('shenqingDataEdit.do?act=insertDaiJiaofei&countNum=' + $("#countNum").val());
+			commonSubmit('jiaofei.do?act=save&countNum=' + $("#countNum").val()+"&sourceType=2");
 			}
 	}
 	checkInput = function(){

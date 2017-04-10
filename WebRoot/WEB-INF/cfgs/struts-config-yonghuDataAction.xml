@@ -108,7 +108,6 @@
         </action>
         
         <action name="jiaofeiDataFrom" path="/shenqingDataEdit" type="com.stock.yonghushuju.YonghuDataEditAction" parameter="act" validate="true" scope="request">
-			<forward name="init.insert" path="/xufei/insert.jsp"/>
 			<forward name="init.changePwd" path="/xufei/changePwd.jsp"/>
 			<forward name="init.tuiding" path="/xufei/tuiding.jsp"/>
 			<forward name="init.insertweixiu" path="/xufei/insertweixiu.jsp"/>
@@ -128,28 +127,28 @@
 			<forward name="changetvsj" path="/"/>
 			<forward name="changetjsj" path="/"/>
         </action>
-        
+
         <action name="jiaofeiDataFrom" path="/daijiaoFeidataImport" type="com.stock.yonghushuju.ImportDataAction" parameter="act" validate="true" scope="request">
 			<forward name="success" path="/chulidaijiaofeiDataList.do?act=init"/>
 			<forward name="success1" path="/chulidaiweixiuDataList.do?act=init"/>
 			<forward name="success2" path="/dealOperateList.do?act=init"/>
         </action>
-        
+
     <!--     异步查询，查询小区的地址 -->
-        <action name="jiaofeiDataFrom" path="/allStu"  type="com.stock.yonghushuju.CasecadingMenuAction" parameter="act" validate="true" scope="request">   
+        <action name="jiaofeiDataFrom" path="/allStu"  type="com.stock.yonghushuju.CasecadingMenuAction" parameter="act" validate="true" scope="request">
 			<forward name="" path=""></forward>
         </action>
-        
+
         <!-- 异步获取出所有的用户账户信息  2015-01-15 -->
-        <action name="jiaofeiDataFrom" path="/countNum"  type="com.stock.yonghushuju.CasecadingMenuAction" parameter="act" validate="true" scope="request">   
+        <action name="jiaofeiDataFrom" path="/countNum"  type="com.stock.yonghushuju.CasecadingMenuAction" parameter="act" validate="true" scope="request">
 			<forward name="countNum" path="/"/>
         </action>
-        
+
         <!-- 异步获取出所选账户的有效时间  2015-05-26 -->
-        <action name="jiaofeiDataFrom" path="/countValtime"  type="com.stock.yonghushuju.GetValDateAction" parameter="act" validate="true" scope="request">   
+        <action name="jiaofeiDataFrom" path="/countValtime"  type="com.stock.yonghushuju.GetValDateAction" parameter="act" validate="true" scope="request">
 			<forward name="countNum" path="/"/>
         </action>
-        
+
         <action name="tietongDataForm" path="/tietongimport" type="com.stock.tietongshuju.ImportDataAction" parameter="act" validate="true" scope="request">
 			<forward name="success" path="/yonghuDataList.do?act=init&amp;zhuangtai=0"/>
         </action>
