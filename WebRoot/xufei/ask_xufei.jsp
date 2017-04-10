@@ -234,7 +234,7 @@
 				<!-- button -->
 				<div id="buttonC" name="button" class="content_button" >
 				  <html:button property="btnSave" value="申请续费" styleClass="commonButton2" onclick="commonSubmit('jiaofei.do?act=form&sourceType=1')"/>
-					<html:button property="btnSave2" value="快速续费" styleClass="button1" onclick="commonSubmit('jiaofei.do?act=form&sourceType=2')"/>
+					<html:button property="btnSave2" value="快速续费" styleClass="button1" onclick="commonSubmit('jiaofei.do?act=form&sourceType=3')"/>
 
 
 				</div>

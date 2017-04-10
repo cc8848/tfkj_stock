@@ -161,7 +161,13 @@ public class JiaoFeiService extends BusinessService {
             model.put("shoukuanshijian", form.getShoukuanshijian());
             model.put("beiyong1", form.getShichangRadius());
             model.put("yunyingshang", form.getYunyingshang());
-            model.put("beizhuhuizong", form.getBeizhuhuizong() + " 操作人:" + getUserInfo().getEmployeeName() + " 申请时间：" + form.getNowdata());
+
+            String sourceType=form.getSourceType();
+            if(StringUtils.isNotBlank(sourceType)&&sourceType.equals("2")){
+                model.put("beizhuhuizong","快速续费");
+            }else{
+                model.put("beizhuhuizong", form.getBeizhuhuizong() + " 操作人:" + getUserInfo().getEmployeeName() + " 申请时间：" + form.getNowdata());
+            }
             dao.insert("yonghushuju", model);
 
             commit();
