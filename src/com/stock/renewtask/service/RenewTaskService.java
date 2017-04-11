@@ -38,13 +38,15 @@ public class RenewTaskService extends BusinessService {
 
         ParameterSet set = new ParameterSet();
         set.add("beizhuhuizong", "@beizhuhuizong", "网上续费");
+        set.add("beizhuhuizong2", "@beizhuhuizong2", "快速续费");
         set.add("yonghuzhuangtai", "@yonghuzhuangtai", "待缴费");
 
         DataSet<DataRow> query = dao.executeQuery("findRenewTaskData", set);
         if(query==null||query.size()==0){
+            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<没有找到自动续费的待缴费数据，退出>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
             return;
         }
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + query.size() + ">>>>>>>>>>>>");
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<获取到的待缴费的数据有：" + query.size() + "条>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         for (int i=0;i<query.size();i++) {
 //            查询网络和电视，从而判断是网络或电视或电话
             //循环集合时从新查一下数据，防止出现并发问题

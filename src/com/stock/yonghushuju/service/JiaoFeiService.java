@@ -80,7 +80,7 @@ public class JiaoFeiService extends BusinessService {
         }
 
 //        生成到数据库
-        jfForm.setYewu(stringyouxiao+jfForm.getYewu());
+        jfForm.setYewu(stringyouxiao+(jfForm.getYewu()==null?"":jfForm.getYewu()));
         if (!"".equals(jfForm.getDianshi()) && !"0".equals(jfForm.getDianshi()) && null != jfForm.getDianshi()) {
             jfForm.setDianhuaip(countNum);
         } else if (!"".equals(jfForm.getWangluo()) && !"0".equals(jfForm.getWangluo()) && null != jfForm.getWangluo()) {
@@ -161,9 +161,10 @@ public class JiaoFeiService extends BusinessService {
             model.put("shoukuanshijian", form.getShoukuanshijian());
             model.put("beiyong1", form.getShichangRadius());
             model.put("yunyingshang", form.getYunyingshang());
-
+            model.put("createby",getUserInfo().getEmployeeName());
             String sourceType=form.getSourceType();
-            if(StringUtils.isNotBlank(sourceType)&&sourceType.equals("2")){
+            //3代表快速续费
+            if(StringUtils.isNotBlank(sourceType)&&sourceType.equals("3")){
                 model.put("beizhuhuizong","快速续费");
             }else{
                 model.put("beizhuhuizong", form.getBeizhuhuizong() + " 操作人:" + getUserInfo().getEmployeeName() + " 申请时间：" + form.getNowdata());
@@ -180,6 +181,12 @@ public class JiaoFeiService extends BusinessService {
     }
 
 
+    /**
+     * 续费
+     * @param jiaofeiDataFrom
+     * @return
+     * @throws Exception
+     */
     public CommonMessage approve(JiaofeiDataFrom jiaofeiDataFrom) throws Exception {
         openTransaction();
         String wsFlag = "";

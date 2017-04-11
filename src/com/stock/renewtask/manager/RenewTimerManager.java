@@ -10,7 +10,7 @@ import java.util.Timer;
 public class RenewTimerManager {
 
 	// 时间间隔
-	private static final long PERIOD = 3 * 60 * 1000; //15分钟
+	private static final long PERIOD = 1 * 60 * 1000; //15分钟
 
 
 	public RenewTimerManager() {

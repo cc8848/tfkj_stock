@@ -740,7 +740,7 @@ public class YonghuDataService extends BusinessService {
 				linecolor  = "background-color: rgb(244, 176, 132)";
 			}
 			String beizhuhuizong=row.getDataElement("beizhuhuizong").getString();
-			if("网上续费".equals(beizhuhuizong)){
+			if("网上续费".equals(beizhuhuizong)||"快速续费".equals(beizhuhuizong)){
 				linecolor  = "background-color: rgb(122, 172, 199)";
 			}
 			DataElement colordata = new DataElement();

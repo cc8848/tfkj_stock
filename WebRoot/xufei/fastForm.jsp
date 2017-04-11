@@ -677,24 +677,17 @@
                             <html:hidden property="yewushijian" name="jiaofeiDataFrom" styleId="yewushijian"/>
                             业务开机时间：
                             <html:text name="jiaofeiDataFrom" property="kaijishijian" styleId="kaijishijians" size="10"
-                                       onclick="WdatePicker({el:'kaijishijians'})" onchange="changeshijian()"/>
-                            <img onclick="WdatePicker({el:'kaijishijians'})"
-                                 src="${pageContext.request.contextPath}/js/My97DatePicker/skin/datePicker.gif"
-                                 width="16" height="22" align="absmiddle"/>
+                                   readonly="true"/>
+
                             <a:need/>
                             业务停机时间：
                             <html:text name="jiaofeiDataFrom" property="tingjishijian" styleId="tingjishijians"
-                                       size="10" onclick="WdatePicker({el:'tingjishijians'})"/>
-                            <img onclick="WdatePicker({el:'tingjishijians'})"
-                                 src="${pageContext.request.contextPath}/js/My97DatePicker/skin/datePicker.gif"
-                                 width="16" height="22" align="absmiddle"/>
-                            <a:need/><br/>
+                                       size="10"  readonly="true"/>
+                            <a:need/>
                             收款时间：
                             <html:text name="jiaofeiDataFrom" property="shoukuanshijian" styleId="shoukuanshijian"
-                                       size="10" onclick="WdatePicker({el:'shoukuanshijian'})"/>
-                            <img onclick="WdatePicker({el:'shoukuanshijian'})"
-                                 src="${pageContext.request.contextPath}/js/My97DatePicker/skin/datePicker.gif"
-                                 width="16" height="22" align="absmiddle"/>
+                                       size="10"  readonly="true"/>
+
                             <a:need/>
                         </td>
                     </tr>
@@ -806,6 +799,7 @@
             commonSubmit('jiaofei.do?act=save&countNum=' + $("#countNum").val()+"&sourceType=3");
         }
     }
+
     checkInput = function () {
 
         var dizhi = document.forms[0].dizhi.value;

@@ -8790,6 +8790,16 @@ and y.yonghuzhuangtai in ('已安装','已收件','已维修','已续费','已退订')
 		[AND  a.yonghuzhuangtai=@yonghuzhuangtai]
 		[AND  a.beizhuhuizong=@beizhuhuizong]
 		[AND DATE_FORMAT(a.kaijishijian,'%Y-%m-%d') = @kaijishijian]
+
+		union all
+		select
+		*
+		from yonghushuju  a
+		where 1=1
+		[AND  a.shigongren=@shigongren]
+		[AND  a.yonghuzhuangtai=@yonghuzhuangtai]
+		[AND  a.beizhuhuizong=@beizhuhuizong2]
+		[AND DATE_FORMAT(a.kaijishijian,'%Y-%m-%d') = @kaijishijian]
 		order by createdt desc
 	</sql>
 	<!--根据账号ip查询数据库中的数据 必须保证一个有值的时候一个为零-->
