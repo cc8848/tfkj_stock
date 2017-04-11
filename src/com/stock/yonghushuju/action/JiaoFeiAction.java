@@ -45,10 +45,10 @@ public class JiaoFeiAction extends BusinessAction {
     public ActionForward form(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         initForm(form);
         String sourceType=((JiaofeiDataFrom) form).getSourceType();
-        if(StringUtils.isNotBlank(sourceType)&&sourceType.equals("2")){
-            return mapping.findForward(FW_INIT_INSERT);
-        }else{
+        if(StringUtils.isNotBlank(sourceType)&&sourceType.equals("3")){
             return mapping.findForward(FW_INIT_INSERT2);
+        }else{
+            return mapping.findForward(FW_INIT_INSERT);
         }
 
     }
