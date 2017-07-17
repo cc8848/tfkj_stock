@@ -125,8 +125,8 @@ public class ReportExportService extends BusinessService {
             l.add(String.valueOf(centerSum));
             listData.add(l);
             int zt = 1;//存款日记账
-            toExcel(listData, zt);
-            return new CommonMessage(ErrorConstant.DOWN_BIDUI_ANZHUANG, "<a href='"+remoteAddr+"/excel/rijizhang.xls'>下载存款银行日记账Excel</a>");
+            int time=toExcel(listData, zt);
+            return new CommonMessage(ErrorConstant.DOWN_BIDUI_ANZHUANG, "<a href='"+remoteAddr+"/excel/rijizhang"+time+".xls'>下载存款银行日记账Excel</a>");
         } catch (Exception e) {
             return new CommonMessage(ErrorConstant.DOWN_BIDUI_ANZHUANG, "Excel表格导出失败！");
         }
@@ -290,8 +290,8 @@ public class ReportExportService extends BusinessService {
             //  float   b   =   (float)(Math.round(a*100))/100;
 
             int zt = 2;//收入汇总表
-            toExcel(listData, zt);
-            return new CommonMessage(ErrorConstant.DOWN_BIDUI_ANZHUANG, "<a href='"+remoteAddr+"/excel/shouruhuizong.xls'>下载收入汇总表Excel</a>");
+            int time=toExcel(listData, zt);
+            return new CommonMessage(ErrorConstant.DOWN_BIDUI_ANZHUANG, "<a href='"+remoteAddr+"/excel/shouruhuizong"+time+".xls'>下载收入汇总表Excel</a>");
         } catch (Exception e) {
             return new CommonMessage(ErrorConstant.DOWN_BIDUI_ANZHUANG, "Excel表格导出失败！");
         }
@@ -339,10 +339,12 @@ public class ReportExportService extends BusinessService {
             l2.add("收视");
             l2.add("设备押金");
             l2.add("设备押金");
+
             l2.add("销售设备");
             l2.add("初装费");
             l2.add("加点/材料/维修/熔纤");
             l2.add("存款合计");
+
             l2.add("存款合计");
             l2.add("存款合计");
             l2.add("存款合计");
@@ -355,6 +357,7 @@ public class ReportExportService extends BusinessService {
             l2.add("开票明细");
 
             listData.add(l2);
+
             List<String> l3 = new ArrayList<String>();
             l3.add("收款日期");
             l3.add("收据号");
@@ -703,8 +706,8 @@ public class ReportExportService extends BusinessService {
             listData.add(lzongji);
 
             int zt = 3;//收费存款明细表
-            toExcel(listData, zt);
-            return new CommonMessage(ErrorConstant.DOWN_BIDUI_ANZHUANG,"<a href='"+remoteAddr+"/excel/shoufeicunkuanmingxi.xls'>下载收费存款明细表Excel</a>");
+            int time=toExcel(listData, zt);
+            return new CommonMessage(ErrorConstant.DOWN_BIDUI_ANZHUANG,"<a href='"+remoteAddr+"/excel/shoufeicunkuanmingxi"+time+".xls'>下载收费存款明细表Excel</a>");
         } catch (Exception e) {
             e.printStackTrace();
             return new CommonMessage(ErrorConstant.DOWN_BIDUI_ANZHUANG, "Excel表格导出失败！");
@@ -960,17 +963,17 @@ public class ReportExportService extends BusinessService {
 
 
             int zt = 4;//电信代收费存款明细表
-            toExcel(listData, zt);
+            int time=toExcel(listData, zt);
             //toExceldownDianXinShouKuan(listData);
-            return new CommonMessage(ErrorConstant.DOWN_BIDUI_ANZHUANG, "<a href='"+remoteAddr+"/excel/dianxindaishoufei.xls'>下载电信代收费存款明细表Excel</a>");
+            return new CommonMessage(ErrorConstant.DOWN_BIDUI_ANZHUANG, "<a href='"+remoteAddr+"/excel/dianxindaishoufei"+time+".xls'>下载电信代收费存款明细表Excel</a>");
         } catch (Exception e) {
             return new CommonMessage(ErrorConstant.DOWN_BIDUI_ANZHUANG, "Excel表格导出失败！");
         }
     }
 
 
-    private void toExcel(List<List<String>> listData, int zt) throws IOException {
-
+    private int  toExcel(List<List<String>> listData, int zt) throws IOException {
+        int time= (int) (Math.random()*10000);
         try {
             ExportCaiwuExcel ex = new ExportCaiwuExcel();
             String[] headers = {};
@@ -981,7 +984,7 @@ public class ReportExportService extends BusinessService {
 
 
             if (zt == 1) {
-                path = path + "excel/rijizhang.xls";
+                path = path + "excel/rijizhang"+time+".xls";
                 if (path.indexOf("%") >= 0) {
                     try {
                         path = URLDecoder.decode(path, "utf-8");
@@ -991,7 +994,7 @@ public class ReportExportService extends BusinessService {
                     }
                 }
             } else if (zt == 2) {
-                path = path + "excel/shouruhuizong.xls";
+                path = path + "excel/shouruhuizong"+time+".xls";
                 if (path.indexOf("%") >= 0) {
                     try {
                         path = URLDecoder.decode(path, "utf-8");
@@ -1001,7 +1004,7 @@ public class ReportExportService extends BusinessService {
                     }
                 }
             } else if (zt == 3) {
-                path = path + "excel/shoufeicunkuanmingxi.xls";
+                path = path + "excel/shoufeicunkuanmingxi"+time+".xls";
                 if (path.indexOf("%") >= 0) {
                     try {
                         path = URLDecoder.decode(path, "utf-8");
@@ -1011,7 +1014,7 @@ public class ReportExportService extends BusinessService {
                     }
                 }
             } else if (zt == 4) {//电信代收费存款明细表
-                path = path + "excel/dianxindaishoufei.xls";
+                path = path + "excel/dianxindaishoufei"+time+".xls";
                 if (path.indexOf("%") >= 0) {
                     try {
                         path = URLDecoder.decode(path, "utf-8");
@@ -1038,6 +1041,7 @@ public class ReportExportService extends BusinessService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return time;
     }
 
 
